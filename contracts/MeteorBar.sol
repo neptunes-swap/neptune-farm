@@ -4,8 +4,8 @@ import "@neptuneswap/neptune-swap-lib/contracts/token/BEP20/BEP20.sol";
 
 import "./NeptuneToken.sol";
 
-// SyrupBar with Governance.
-contract SyrupBar is BEP20('SyrupBar Token', 'SYRUP') {
+// MeteorBar with Governance.
+contract MeteorBar is BEP20('MeteorBar Token', 'METEOR') {
     /// @notice Creates `_amount` token to `_to`. Must only be called by the owner (MasterChef).
     function mint(address _to, uint256 _amount) public onlyOwner {
         _mint(_to, _amount);
@@ -18,22 +18,22 @@ contract SyrupBar is BEP20('SyrupBar Token', 'SYRUP') {
     }
 
     // The NEPTUNE TOKEN!
-    NeptuneToken public cake;
+    NeptuneToken public tune;
 
 
     constructor(
         NeptuneToken _neptune
     ) public {
-        cake = _neptune;
+        tune = _neptune;
     }
 
-    // Safe cake transfer function, just in case if rounding error causes pool to not have enough NEPTUNEs.
-    function safeCakeTransfer(address _to, uint256 _amount) public onlyOwner {
-        uint256 cakeBal = cake.balanceOf(address(this));
-        if (_amount > cakeBal) {
-            cake.transfer(_to, cakeBal);
+    // Safe tune transfer function, just in case if rounding error causes pool to not have enough NEPTUNEs.
+    function safeTuneTransfer(address _to, uint256 _amount) public onlyOwner {
+        uint256 tuneBal = tune.balanceOf(address(this));
+        if (_amount > tuneBal) {
+            tune.transfer(_to, tuneBal);
         } else {
-            cake.transfer(_to, _amount);
+            tune.transfer(_to, _amount);
         }
     }
 
